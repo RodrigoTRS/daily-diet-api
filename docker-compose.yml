@@ -1,0 +1,24 @@
+version: "3.1"
+
+services:
+  db:
+    image: bitnami/postgresql
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=docker
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=dailydiet
+    volumes:
+      - ./db:/bitnami/postgresql
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "admin123"
+    ports:
+      - 3666:80
+    depends_on:
+      - db
