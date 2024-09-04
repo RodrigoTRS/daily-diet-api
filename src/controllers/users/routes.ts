@@ -1,8 +1,6 @@
 import { Router } from "express";
-import { register } from "./register";
-import { login } from "./login";
+import { getStatistics } from "./get-statistics";
 
 export const userRoutes = Router();
 
-userRoutes.post("/register", register);
-userRoutes.post("/login", login);
+userRoutes.get("/statistics", getStatistics);

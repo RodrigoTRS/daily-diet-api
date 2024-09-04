@@ -4,8 +4,9 @@ import cookieParser from "cookie-parser";
 
 import { verifySession } from "./controllers/middlewares/verify-session";
 
-import { userRoutes } from "./controllers/users/routes";
+import { authRoutes } from "./controllers/auth/routes";
 import { mealRouter } from "./controllers/meals/routes";
+import { userRoutes } from "./controllers/users/routes";
 
 export const app = express();
 
@@ -16,9 +17,10 @@ app.use(cors({
     credentials: true
 }));
 
-app.use("/user", userRoutes);
+app.use("/auth", authRoutes);
 
 app.use("/", verifySession);
 
 app.use("/meal", mealRouter);
+app.use("/user", userRoutes);
 

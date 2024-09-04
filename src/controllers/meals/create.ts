@@ -25,14 +25,14 @@ export async function create(req: Request, res: Response) {
 
     const useCase = makeCreateMealUseCase();
 
-    const { meal } = await useCase.execute({
+    await useCase.execute(
         userId,
-        title,
-        description,
-        mealDate,
-        onDiet,
-    }); 
+        {
+            title,
+            description,
+            mealDate,
+            onDiet,
+        }); 
 
-
-    res.status(200).send(meal);
+    return res.status(201).send();
 }

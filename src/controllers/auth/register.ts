@@ -27,5 +27,5 @@ export async function register(req: Request, res: Response) {
         return res.status(403).send({ error: response.message });
     }
 
-    res.status(200).send(response);
+    return res.status(200).send();
 }

@@ -1,7 +1,6 @@
 import { Meal } from "@prisma/client";
 
-export interface CreateMeal {
-    userId: string,
+export interface MealProps {
     title: string
     description: string
     mealDate: Date
@@ -10,5 +9,9 @@ export interface CreateMeal {
 
 
 export interface MealsRepository {
-    create: (meal: CreateMeal) => Promise<Meal>
+    create: (userId: string, meal: MealProps) => Promise<Meal>
+    update: (userId: string, mealId: string, meal: MealProps) => Promise<Meal>
+    list: (userId: string) => Promise<Meal[]>
+    getById: (userId: string, mealId: string) => Promise<Meal | null>
+    exclude: (userId: string, mealId: string) => Promise<Meal | null>
 }

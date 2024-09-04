@@ -30,5 +30,5 @@ export async function login(req: Request, res: Response) {
         { maxAge: 1000 * 60 * 15 }, // 15 minutes
     );
 
-    return res.status(200).send(response.session);
+    return res.status(200).send();
 }

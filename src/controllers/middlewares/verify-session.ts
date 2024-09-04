@@ -15,8 +15,6 @@ export async function verifySession(req: Request, res: Response, next: NextFunct
 
     const sessionId = cookies["sessionId"];
 
-    console.log(sessionId);
-
     const session = await prisma.session.findUnique({
         where: {
             id: sessionId
